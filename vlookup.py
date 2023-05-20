@@ -15,7 +15,9 @@ def vlookup (df_main, df_val, col_key, col_val = None, nan_val = False):
         # col_val = list(set(df_val.columns) - set(col_key))
     else:    
         col_val = col_val if type(col_val) == list else [col_val]
-    col_val = col_val.drop(list(set(df_main.columns).intersection(col_val)))
+        
+    elements_to_drop = list(set(df_main.columns).intersection(col_val))
+    col_val = [x for x in col_val if x not in elements_to_drop]
     
     df_map = df_val[col_key + col_val].copy()
     df_result = df_main.copy()
