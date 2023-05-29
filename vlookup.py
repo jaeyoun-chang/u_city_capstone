@@ -1,11 +1,11 @@
 def vlookup (df_main, df_val, col_key, col_val = None, nan_val = False):
     '''
     function like vlookup of Excel
-    df_main: df to receive vlookup value
-    df_val: df to give vlookup value
+    df_main: df to receive vlookup Score
+    df_val: df to give vlookup Score
     col_key: str or list, column(s) of vlookup key (both of 2 dataframes must have this column(s))
-    col_val: str or list, column(s) of vlookup value
-    nan_val: value when vlookup result is np.nan, default as np.nan
+    col_val: str or list, column(s) of vlookup Score
+    nan_val: Score when vlookup result is np.nan, default as np.nan
     '''
 
     col_key = col_key if type(col_key) == list else [col_key]
