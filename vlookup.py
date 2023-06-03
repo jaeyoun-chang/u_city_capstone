@@ -1,6 +1,6 @@
 def vlookup (
-    df_main, df_lookup, lookup_col = None,  
-    left_key = None, right_key = None, org_key = False, 
+    df_main, df_lookup, left_key = None, lookup_col = None, 
+    right_key = None, org_key = False, 
     fill_na = False, intsec = 'replace'
     ):
     '''
@@ -37,7 +37,7 @@ def vlookup (
         left_key = df_lookup.columns[0]
     
     # enlist left_key
-    left_key = left_key if type(left_key) == list else list(left_key)
+    left_key = left_key if type(left_key) == list else [left_key]
 
     
     
@@ -47,20 +47,21 @@ def vlookup (
         right_key = left_key
     
     # enlist right_key
-    right_key = right_key if type(right_key) == list else list(right_key)
+    right_key = right_key if type(right_key) == list else [right_key]
     
     
     
     ### lookup_col and modify df_lookup
     # default as none-key columns of df_lookup
     if lookup_col is None:
-        lookup_col = list(x for x in df_lookup.columns if x not in right_key)
+        lookup_col = [x for x in df_lookup.columns if x not in right_key]
 
     # enlist lookup_col
-    lookup_col = lookup_col if type(lookup_col) == list else list(lookup_col)
+    lookup_col = lookup_col if type(lookup_col) == list else [lookup_col]
     
-    # modify df_lookup to contain right_key and lookup_col
-    df_lookup = df_lookup[right_key + lookup_col]    
+    # modify df_lookup to contain unique right_key and lookup_col
+    df_lookup = df_lookup[right_key + lookup_col]
+    df_lookup = df_lookup.drop_duplicates(subset = right_key)   
     
     
     
@@ -73,9 +74,9 @@ def vlookup (
     # 2-2) output_col intersection with df_lookup: intsec_col
     #
     # categorize columns
-    output_col = list(x for x in df_output.columns if x not in left_key)
+    output_col = [x for x in df_output.columns if x not in left_key]
     # output_col_excl = list(x for x in output_col if x not in lookup_col)
-    intsec_col = list(x for x in output_col if x in lookup_col)
+    intsec_col = [x for x in output_col if x in lookup_col]
     # df_output_col_excl = list(x for x in df_output.columns if x not in intsec_col)
     
     
@@ -90,7 +91,7 @@ def vlookup (
     # 5) other columns not belonging to both of right_key and lookup_col in case lookup_col is designated
     # 
     # categorize columns
-    lookup_col_excl = list(x for x in lookup_col if x not in intsec_col)
+    lookup_col_excl = [x for x in lookup_col if x not in intsec_col]
 
     
             
@@ -100,7 +101,8 @@ def vlookup (
        
         left_key_modified = list()
         for i in left_key:
-            df_output[i + '_'] = df_output[i].fillna('').astype(str).str.strip().str.upper()
+            df_lookup = df_lookup.copy() # to avoid SettingWithCopyWarning
+            df_output.loc[:, i + '_'] = df_output.loc[:, i].fillna('').astype(str).str.strip().str.upper()
             left_key_modified.append(i + '_')
         left_key = left_key_modified
         # df_output columns:    1-1) left_key (original), 1-2) left_key_modified,
@@ -108,7 +110,8 @@ def vlookup (
         
         right_key_modified = list()
         for i in right_key:
-            df_lookup[i + '_'] = df_lookup[i].fillna('').astype(str).str.strip().str.upper()
+            df_lookup = df_lookup.copy() # to avoid SettingWithCopyWarning
+            df_lookup.loc[:, i + '_'] = df_lookup.loc[:, i].fillna('').astype(str).str.strip().str.upper()
             right_key_modified.append(i + '_')
         # drop unnecessary right_key (original)
         df_lookup = df_lookup.drop(right_key, axis = 1)
@@ -126,22 +129,7 @@ def vlookup (
 
         
     ### merge conditions based on intsec
-    if intsec == 'replace':
-        df_output = df_output.drop(intsec_col, axis = 1)    
-        suffix = ''
-        # after merge:  
-        # - on df_output with 1-1) left_key (original), 2-1) output_col_excl and without 2-2) intsec_col 
-        #   new values of 4) lookup_col from df_lookup to be added
-        # - columns except intsec_col to keep original order
-        
-    elif intsec == 'copy':
-        suffix = '_'
-        # after merge:  
-        # - on df_output of its original shape with 1-1) left_key (original), 2-1) output_col_excl, 2-2) intsec_col 
-        #   new values of 4-1) lookup_col_excl, 2-2) intsec_col with '_' suffix from df_lookup to be added
-        # - all columns to keep original order
-    
-    elif intsec == 'update':
+    if intsec == 'update':
         suffix = '_'
         # after merge:  
         # - on df_output with 1-1) left_key (original), 2-1) output_col_excl and without 2-2) intsec_col 
@@ -150,8 +138,23 @@ def vlookup (
         # - updated values of 2-2) intsec_col to contain new values of lookup_col if they are provided
         #   and original values of df_output if lookup_col values are not provided
         # - columns except intsec_col to keep original order 
-    
-    
+
+    elif intsec == 'copy':
+        suffix = '_'
+        # after merge:  
+        # - on df_output of its original shape with 1-1) left_key (original), 2-1) output_col_excl, 2-2) intsec_col 
+        #   new values of 4-1) lookup_col_excl, 2-2) intsec_col with '_' suffix from df_lookup to be added
+        # - all columns to keep original order
+        
+    else:
+        df_output = df_output.drop(intsec_col, axis = 1)    
+        suffix = ''
+        # after merge:  
+        # - on df_output with 1-1) left_key (original), 2-1) output_col_excl and without 2-2) intsec_col 
+        #   new values of 4) lookup_col from df_lookup to be added
+        # - columns except intsec_col to keep original order
+
+
     
     ### merge
     df_output = df_output.merge(
@@ -165,28 +168,41 @@ def vlookup (
     
     
     ### fill_na and reshape based on intsec
-    # enlist fill_na
-    if fill_na:
-        fill_na = fill_na if type(fill_na) == list else [fill_na] * len(lookup_col)   
+    # modify lookup_col for update and copy
+    lookup_col_modified = [x if x in lookup_col_excl else x + '_' for x in lookup_col]
+    # enlist fill_na for copy and replace 
+    fill_na = fill_na if type(fill_na) == list else [fill_na] * len(lookup_col)     
     
-    # apply fill_na and reshape based on intsec 
-    if intsec == 'replace':
-        for i, j in zip(lookup_col, fill_na):
-            df_output[i] = df_output[i].fillna(j)
-    
-    else:
-        lookup_col_modified = list(x if x in lookup_col_excl else x + '_' for x in lookup_col)
+    # apply fill_na and reshape for update
+    if intsec == 'update':
+
+        for i, j in zip(lookup_col_modified, lookup_col):
+            df_output[i] = df_output[i].fillna(df_output[j])
         
-        if intsec == 'copy':
+        print(df_output.columns)
+        df_output_col = [x for x in df_output.columns if x not in intsec_col]
+        print(df_output.columns)        
+        df_output = df_output[df_output_col]
+        
+        df_output_col = [x.replace('_', '') for x in df_output.columns]
+        print(df_output.columns)
+        df_output.columns = df_output_col   
+    
+
+    if fill_na:
+        # enlist fill_na designated for copy and replace 
+        fill_na = fill_na if type(fill_na) == list else [fill_na] * len(lookup_col)          
+        
+        # apply fill_na for copy
+        if intsec == 'copy':    
+            lookup_col_modified = [x if x in lookup_col_excl else x + '_' for x in lookup_col]
             for i, j in zip(lookup_col_modified, fill_na):
                 df_output[i] = df_output[i].fillna(j)
+        
+        # apply fill_na for replace
+        else:
+            # apply fill_na and reshape based on intsec 
+            for i, j in zip(lookup_col, fill_na):
+                df_output[i] = df_output[i].fillna(j)
     
-        elif intsec == 'update':
-            for i, j in zip(lookup_col_modified, lookup_col):
-                df_output[i] = df_output[i].fillna(df_output[j])
-            
-            df_output_col = list(x for x in df_output.columns if x not in intsec)
-            df_output = df_output[df_output_col]
-            
-            df_output_col = list(x.replace('_', '') for x in df_output.columns)
-            df_output.columns = df_output_col
+    return df_output

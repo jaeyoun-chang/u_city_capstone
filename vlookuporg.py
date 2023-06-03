@@ -1,4 +1,4 @@
-def vlookup (df_main, df_val, col_key, col_val = None, nan_val = False):
+def vlookup_org (df_main, df_val, col_key, col_val = None, nan_val = False):
     '''
     function like vlookup of Excel
     df_main: df to receive vlookup Score
