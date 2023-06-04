@@ -169,9 +169,7 @@ def vlookup (
     
     ### fill_na and reshape based on intsec
     # modify lookup_col for update and copy
-    lookup_col_modified = [x if x in lookup_col_excl else x + '_' for x in lookup_col]
-    # enlist fill_na for copy and replace 
-    fill_na = fill_na if type(fill_na) == list else [fill_na] * len(lookup_col)     
+    lookup_col_modified = [x if x in lookup_col_excl else x + '_' for x in lookup_col]  
     
     # apply fill_na and reshape for update
     if intsec == 'update':
@@ -204,5 +202,5 @@ def vlookup (
             # apply fill_na and reshape based on intsec 
             for i, j in zip(lookup_col, fill_na):
                 df_output[i] = df_output[i].fillna(j)
-    
+        
     return df_output
