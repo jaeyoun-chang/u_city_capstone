@@ -177,13 +177,10 @@ def vlookup (
         for i, j in zip(lookup_col_modified, lookup_col):
             df_output[i] = df_output[i].fillna(df_output[j])
         
-        print(df_output.columns)
-        df_output_col = [x for x in df_output.columns if x not in intsec_col]
-        print(df_output.columns)        
+        df_output_col = [x for x in df_output.columns if x not in intsec_col]      
         df_output = df_output[df_output_col]
         
         df_output_col = [x.replace('_', '') for x in df_output.columns]
-        print(df_output.columns)
         df_output.columns = df_output_col   
     
 
