@@ -1,30 +1,29 @@
 def vlookup (
     df_main, df_lookup, left_key = None, lookup_col = None, 
-    right_key = None, org_key = False, 
-    fill_na = False, intsec = 'replace'
+    right_key = None, org_key = False, fill_na = False, intsec = 'replace'
     ):
     '''
     function for processing like Excel's vlookup
 
     df_main: df to receive vlookup values
     df_lookup: df to give vlookup values
+    lookup_col: str / list, column(s) vlookup value(s) of df_lookup
 
     left_key: str / list, mapping column(s) in df_main, default as 1st column of df_lookup
     right_key: str / list, mapping column(s) in df_lookup, default as left_key
+    
     org_key : boolean, selection of using original key(s) or not, default as False
-    * default value (org_key = False) 
-    enables using modified left/right_keys by fillna('').astype(str).str.strip().str.upper()
-
-    lookup_col = str / list, column(s) of lookup values in df_lookup, default as all columns except right_key
-
-    col_key: str / list, column(s) of vlookup key (both of 2 dataframes must have this column(s))
-    col_val: str / list, column(s) of vlookup value
-    fill_na: value when vlookup result is null, default as null
-
-    # update: str, update added to lookup_col to keep intersection columns in df_main and df_lookup, default as blank
-    # * default value (update = '')
-    # *
-    # *
+    * default value False enables using modified left/right_keys
+      by fillna('').astype(str).str.strip().str.upper()
+    
+    fill_na: str / list, value(s) when vlookup result is null, default as null
+    
+    intsec : selection of how to process the intersection of non-left_key column(s)
+    of df_main and lookup_col, default as 'replace'
+    * with default 'replace', values will replaced by df_lookup
+    * with 'copy', values of both dataframes will be remained
+    * with 'update', if mapped vlaues exist, values of df_main will be replaced by df_lookup,
+      and if mapped vlaues do not exist, values of df_main will be remained
     '''
     ### create df_output
     df_output = df_main.copy()
