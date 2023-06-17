@@ -1,4 +1,9 @@
-def dataset_summary (data,  score_form, display = True):
+import numpy as np
+import matplotlib.pyplot as plt
+from vlookup import vlookup
+from view_all import view_all
+
+def dataset_summary (data, feature_desc, score_form, display = True):
     '''
     function to create the summary table of given dataframe,
     by applying describe and transpose methods
@@ -37,14 +42,14 @@ def dataset_summary (data,  score_form, display = True):
     
     return data_summary
 
-def view_feature (data, feature, view_all = True, view_0_10 = True):
+def view_feature (data, feature_desc, feature, view_all = True, view_0_10 = True):
     '''
     function to view and check continuous numeric data
     feature : str, feature name
     view_0_10 : boolean for histogram display of value 0 to 10, default as True
     '''
     # create data_stat using 
-    data_stat = dataset_summary(data, ['int', 'float'], display = False)
+    data_stat = dataset_summary(data, feature_desc, ['int', 'float'], display = False)
 
     min_val = data[feature].min()
     max_val = data[feature].max()

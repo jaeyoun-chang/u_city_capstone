@@ -1,3 +1,6 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
 def miss_val_summary(df, axis_val = 'column', x_bin = 2, bar_chart = True):
     '''
     function to display summary, bar-chart (optional) and histogram

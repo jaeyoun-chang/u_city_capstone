@@ -1,3 +1,6 @@
+import matplotlib.pyplot as plt
+import missingno as msno
+
 def msno_overview (data, chunk_size = 100):
     '''
     function to display missing value using missingno library

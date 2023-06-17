@@ -1,4 +1,12 @@
-def similar_feature (dict_key_1, dict_key_2):
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+from googletrans import Translator
+import Levenshtein
+from vlookup import vlookup
+from view_all import view_all
+
+def similar_feature (dict_key_1, dict_key_2, feature_dict):
     '''
     function to extract the most similar complement features
     of dict_key_1 of feature_dict from dict_key_2
@@ -57,7 +65,8 @@ def ger_to_eng (ger_text):
         return np.nan
 
 def pv_min_max(
-    data, pv_idx = ['category_large', 'Attribute', 'Description', 'Desc', 'Additional notes'], display = True):
+    data, feature_desc, pv_idx = ['category_large', 'Attribute', 'Description', 'Desc', 'Additional notes'],
+    display = True):
     '''
     function to display min/max values of Score after adding information from feature_desc
     
@@ -86,10 +95,10 @@ def pv_min_max(
     return pv
 
 def pv_meaning_score(
-    data, 
+    data, feature_desc,
     pv_idx = ['category_large', 'Attribute', 'Description', 'Desc', 'Additional notes'],
     pv_val = ['Meaning', 'Score'],
-    display = True
+    display = True,
     ):
     '''
     function to display the summary of Meaning and Score values
@@ -117,6 +126,7 @@ def pv_meaning_score(
 
 def pv_verify_null(
     data,
+    feature_desc,
     null_list,
     pv_idx = ['category_large', 'Attribute', 'Description', 'Desc', 'Additional notes'], 
     pv_val = ['Meaning', 'Score'],    
@@ -135,6 +145,6 @@ def pv_verify_null(
     null_check_Attribute = data.query('Meaning in @null_list').Attribute.to_list()
     null_check = data.query('Attribute in @null_check_Attribute')
     
-    pv = pv_meaning_score(null_check, pv_idx, pv_val, display)
+    pv = pv_meaning_score(null_check, feature_desc, pv_idx, pv_val, display)
     
     return pv
