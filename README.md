@@ -4,6 +4,11 @@
 * a summary of the results of the analysis, and necessary acknowledgements
 * the Project Definition, Analysis, and Conclusion
 
+pip install googletrans==4.0.0-rc1
+pip install missingno
+pip install pyarrow
+custom modules for convenience are in root folder
+
 ### About the project
 
 This repository is for the final project of Udacity's Data Science Nanodegree program.  
@@ -44,8 +49,9 @@ As the datasets do not have information on what column features and values exact
   - pre_processing items noted in step 1 and 2 were used
   - after pre-processing columns and rows with excessive missing values were removed 
 
-### Part 1 - Data understanding and pre-processing
+### Part 1 - Customer Segmentation Report
 
+![cluster_chart](./cluster_chart.png)
 
 this section focuses on the reference files that can help in understanding dataset contents.
 
