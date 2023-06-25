@@ -51,6 +51,8 @@ As the datasets do not have information on what column features and values exact
 
 ### Part 1 - Customer Segmentation Report
 
+![cluster_number_elbow](./cluster_number_elbow.png)
+
 ![cluster_chart](./cluster_chart.png)
 
 this section focuses on the reference files that can help in understanding dataset contents.
