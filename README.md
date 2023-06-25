@@ -56,7 +56,8 @@ As the datasets do not have information on what column features and values exact
 
 ![cluster_number_elbow](./cluster_number_elbow.png)
 
-![cluster_number_elbow](<img src="./cluster_number_elbow.png", height="600px", width="400px">)
+<img align="center" width="100" height="100" src="./cluster_number_elbow.png">
+
 
 ![cluster_chart](./cluster_chart.png)
 
