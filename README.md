@@ -37,6 +37,29 @@ As the datasets do not have information on what column features and values exact
   - pre_processing items noted in step 1 and 2 were used
   - after pre-processing columns and rows with excessive missing values were removed 
 
+|    | index                            | method      | by_feature                                                         |
+|---:|:---------------------------------|:------------|:-------------------------------------------------------------------|
+| 16 | 3.1.2-dtype                      | astype      | All features in numeric_discrete_features / change dtype to float  |
+| 19 | 3.2.2-EINGEFUEGT_AM              | astype      | EINGEFUEGT_AM / change dtype to datetime only with year values     |
+|  0 | 2.3.1-drop                       | drop        | All / drop features in to_drop                                     |
+|  4 | 3.1.1-ANZ_HAUSHALTE_AKTIV        | log_scaling | ANZ_HAUSHALTE_AKTIV                                                |
+|  8 | 3.1.1-KBA13_ANZAHL_PKW           | log_scaling | KBA13_ANZAHL_PKW                                                   |
+| 17 | 3.2.1-ANZ_STATISTISCHE_HAUSHALTE | log_scaling | ANZ_STATISTISCHE_HAUSHALTE                                         |
+|  2 | 2.3.1-to_null                    | mask        | All / replace Score to null if corresponding Meaning is in to_null |
+|  3 | 2.3.1-unknown_9                  | mask        | category_small in unknown_9 / Score 9 to -1                        |
+|  5 | 3.1.1-ANZ_PERSONEN               | np.where    | ANZ_PERSONEN / Score > 10 to -1                                    |
+|  6 | 3.1.1-ANZ_TITEL                  | np.where    | ANZ_TITEL / Score of ANZ_PERSONEN > 10 to -1                       |
+|  7 | 3.1.1-GEBURTSJAHR                | np.where    | GEBURTSJAHR / Score < 1900 to -1                                   |
+| 18 | 3.2.1-EINGEZOGENAM_HH_JAHR       | np.where    | EINGEZOGENAM_HH_JAHR / Score < 1980 to -1                          |
+|  1 | 2.3.1-minus1                     | replace     | All / {-1: np.nan}                                                 |
+|  9 | 3.1.1-LP_FAMILIE_FEIN            | replace     | LP_FAMILIE_FEIN / {0: -1}                                          |
+| 10 | 3.1.1-LP_FAMILIE_GROB            | replace     | LP_FAMILIE_GROB / {0: -1}                                          |
+| 11 | 3.1.1-LP_LEBENSPHASE_FEIN        | replace     | LP_LEBENSPHASE_FEIN / {0: -1}                                      |
+| 12 | 3.1.1-LP_LEBENSPHASE_GROB        | replace     | LP_LEBENSPHASE_GROB / {0: -1}                                      |
+| 13 | 3.1.2-CAMEO_DEUG_2015X           | replace     | CAMEO_DEUG_2015 / {"X": -1}                                        |
+| 14 | 3.1.2-CAMEO_DEU_2015             | replace     | CAMEO_DEU_2015 / {"XX": -1}                                        |
+| 15 | 3.1.2-CAMEO_INTL_2015XX          | replace     | CAMEO_INTL_2015 / {"XX": -1}                                       |
+
 ### Part 1 - Customer Segmentation Report
 
 <!-- ![cluster_number_elbow](./cluster_number_elbow.png) -->
