@@ -83,6 +83,12 @@ pip install missingno
 pip install pyarrow
 custom modules for convenience are in root folder
 
+<style>
+table {
+  font-size: 8px;
+}
+</style>
+
 | Attribute                   |   importance_pct | Description                                                                 | cluster_0                                          | cluster_1                                        | cluster_2                                        | cluster_3                                        | cluster_4                                        | cluster_5                                        | cluster_6                                        | cluster_7                                          | cluster_8                                        |
 |:----------------------------|-----------------:|:----------------------------------------------------------------------------|:---------------------------------------------------|:-------------------------------------------------|:-------------------------------------------------|:-------------------------------------------------|:-------------------------------------------------|:-------------------------------------------------|:-------------------------------------------------|:---------------------------------------------------|:-------------------------------------------------|
 | D19_GESAMT_ANZ_24           |             12.2 | transaction activity TOTAL POOL in the last 24 months                       | increased activity                                 | no transactions known                            | no transactions known                            | no transactions known                            | no transactions known                            | no transactions known                            | no transactions known                            | increased activity                                 | no transactions known                            |
