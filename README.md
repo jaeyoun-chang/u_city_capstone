@@ -64,6 +64,9 @@ As the datasets do not have information on what column features and values exact
 
 <!-- ![cluster_number_elbow](./cluster_number_elbow.png) -->
 
+<img align="left" width="800" height="500" src="./continuous_1.png">
+<img align="left" width="800" height="500" src="./continuous_2.png">
+
 <img align="left" width="800" height="500" src="./cluster_number_elbow.png">
 
 <img align="left" width="800" height="500" src="./cluster_chart.png">
