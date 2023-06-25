@@ -9,17 +9,6 @@ using machine learning algorithms and datasets provided by Arvato, a mail-order 
 * the characteristics of the company's customers compared to general republic should be clarified  
 * a forecasting model to predict customers' response for a marketing campaign needs to be developed
 
-### Datasets
-
-* Udacity_AZDIAS_052018.csv:  
-  Demographics data for the general population of Germany; 891 211 persons (rows) x 366 features (columns)
-* Udacity_CUSTOMERS_052018.csv:  
-  Demographics data for customers of a mail-order company; 191 652 persons (rows) x 369 features (columns)
-* Udacity_MAILOUT_052018_TRAIN.csv:  
-  Demographics data for individuals who were targets of a marketing campaign; 42 982 persons (rows) x 367 (columns)
-* DIAS Information Levels: a top-level list of attributes and descriptions in Excel
-* DIAS Attribute: a detailed mapping of data values for each feature in alphabetical order in Excel
-
 ### Part 0 - Data understanding and pre-processing
 
 There are 5 datasets given:
@@ -27,9 +16,11 @@ There are 5 datasets given:
   - azdias: demographic data for the general population of Germany; 891 211 persons x 366 features  
   - customers: demographic data for customers of the company; 191 652 persons x 369 features  
   - mailout : demographic data for individuals targets of a marketing campaign; 42 982 persons x 367 features
-* 2 reference files - ref_info and ref_attr:  
-  - ref_info (DIAS Information Levels) is to explain dataset features in unreadable German acronyms  
-  - ref_attr (DIAS Attribute) is to clarify the meanings of dataset Scores in numbers and acronyms
+* 2 reference files  
+  - ref_info (DIAS Information Levels): a top-level list of attributes and descriptions in Excel.
+    This file is to explain dataset features in unreadable German acronyms.  
+  - ref_attr (DIAS Attribute): a detailed mapping of data values for each feature in alphabetical order in Excel.  
+    This file is to clarify the meanings of dataset Scores in numbers and acronyms.
 
 As the datasets do not have information on what column features and values exactly mean,  
 3 steps were taken before finalizing pre-processing:
@@ -48,11 +39,13 @@ As the datasets do not have information on what column features and values exact
 
 ### Part 1 - Customer Segmentation Report
 
-![cluster_number_elbow](./cluster_number_elbow.png)
+<!-- ![cluster_number_elbow](./cluster_number_elbow.png) -->
 
 <img align="left" width="800" height="500" src="./cluster_number_elbow.png">
 
-![cluster_chart](./cluster_chart.png)
+<img align="left" width="800" height="500" src="./cluster_chart.png">
+
+<!-- ![cluster_chart](./cluster_chart.png) -->
 
 this section focuses on the reference files that can help in understanding dataset contents.
 
@@ -66,3 +59,14 @@ pip install googletrans==4.0.0-rc1
 pip install missingno
 pip install pyarrow
 custom modules for convenience are in root folder
+
+### Datasets
+
+* Udacity_AZDIAS_052018.csv:  
+  Demographics data for the general population of Germany; 891 211 persons (rows) x 366 features (columns)
+* Udacity_CUSTOMERS_052018.csv:  
+  Demographics data for customers of a mail-order company; 191 652 persons (rows) x 369 features (columns)
+* Udacity_MAILOUT_052018_TRAIN.csv:  
+  Demographics data for individuals who were targets of a marketing campaign; 42 982 persons (rows) x 367 (columns)
+* DIAS Information Levels: a top-level list of attributes and descriptions in Excel
+* DIAS Attribute: a detailed mapping of data values for each feature in alphabetical order in Excel
