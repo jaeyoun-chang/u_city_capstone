@@ -53,6 +53,8 @@ As the datasets do not have information on what column features and values exact
 
 ![cluster_number_elbow](./cluster_number_elbow.png)
 
+<img src="./cluster_number_elbow.png", height="600px", width="400px">
+
 ![cluster_chart](./cluster_chart.png)
 
 this section focuses on the reference files that can help in understanding dataset contents.
