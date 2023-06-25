@@ -1,14 +1,5 @@
 # Capstone Project: Create a Customer Segmentation Report for Arvato Financial Services
 
-* libraries used, the motivation for the project, the files in the repository with a small description of each
-* a summary of the results of the analysis, and necessary acknowledgements
-* the Project Definition, Analysis, and Conclusion
-
-pip install googletrans==4.0.0-rc1
-pip install missingno
-pip install pyarrow
-custom modules for convenience are in root folder
-
 ### About the project
 
 This repository is for the final project of Udacity's Data Science Nanodegree program.  
@@ -32,7 +23,10 @@ using machine learning algorithms and datasets provided by Arvato, a mail-order 
 ### Part 0 - Data understanding and pre-processing
 
 There are 5 datasets given:
-* 3 dataset files - azdias, customers and mailout
+* 3 dataset files
+  - azdias: demographic data for the general population of Germany; 891 211 persons x 366 features  
+  - customers: demographic data for customers of the company; 191 652 persons x 369 features  
+  - mailout : demographic data for individuals targets of a marketing campaign; 42 982 persons x 367 features
 * 2 reference files - ref_info and ref_attr:  
   - ref_info (DIAS Information Levels) is to explain dataset features in unreadable German acronyms  
   - ref_attr (DIAS Attribute) is to clarify the meanings of dataset Scores in numbers and acronyms
@@ -63,3 +57,12 @@ As the datasets do not have information on what column features and values exact
 this section focuses on the reference files that can help in understanding dataset contents.
 
 This section aims to understand outlines of the 2 datasets and identify baseline factors.  
+
+* libraries used, the motivation for the project, the files in the repository with a small description of each
+* a summary of the results of the analysis, and necessary acknowledgements
+* the Project Definition, Analysis, and Conclusion
+
+pip install googletrans==4.0.0-rc1
+pip install missingno
+pip install pyarrow
+custom modules for convenience are in root folder
