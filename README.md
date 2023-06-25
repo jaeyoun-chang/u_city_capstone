@@ -13,16 +13,19 @@ custom modules for convenience are in root folder
 
 This repository is for the final project of Udacity's Data Science Nanodegree program.  
 
-There are 2 main goals in the project:
+There are 2 main goals in the project:  
 using machine learning algorithms and datasets provided by Arvato, a mail-order sales company in Germany, 
 * the characteristics of the company's customers compared to general republic should be clarified  
 * a forecasting model to predict customers' response for a marketing campaign needs to be developed
 
 ### Datasets
 
-* Udacity_AZDIAS_052018.csv: Demographics data for the general population of Germany; 891 211 persons (rows) x 366 features (columns)
-* Udacity_CUSTOMERS_052018.csv: Demographics data for customers of a mail-order company; 191 652 persons (rows) x 369 features (columns)
-* Udacity_MAILOUT_052018_TRAIN.csv: Demographics data for individuals who were targets of a marketing campaign; 42 982 persons (rows) x 367 (columns)
+* Udacity_AZDIAS_052018.csv:  
+  Demographics data for the general population of Germany; 891 211 persons (rows) x 366 features (columns)
+* Udacity_CUSTOMERS_052018.csv:  
+  Demographics data for customers of a mail-order company; 191 652 persons (rows) x 369 features (columns)
+* Udacity_MAILOUT_052018_TRAIN.csv:  
+  Demographics data for individuals who were targets of a marketing campaign; 42 982 persons (rows) x 367 (columns)
 * DIAS Information Levels: a top-level list of attributes and descriptions in Excel
 * DIAS Attribute: a detailed mapping of data values for each feature in alphabetical order in Excel
 
@@ -53,7 +56,7 @@ As the datasets do not have information on what column features and values exact
 
 ![cluster_number_elbow](./cluster_number_elbow.png)
 
-<img src="./cluster_number_elbow.png", height="600px", width="400px">
+!<img src="./cluster_number_elbow.png", height="600px", width="400px">
 
 ![cluster_chart](./cluster_chart.png)
 
