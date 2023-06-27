@@ -15,7 +15,7 @@ Please find the complete project report in <a href=https://[medium.com/@jaeyoun.
 ## Requirements
 The Jupyter Notebook is written in Python (3.x. version required).
 
-In addition to general modules like numpy, pandas, matplotlib, seaborn and sklearn,
+In addition to general modules like numpy, pandas, matplotlib, seaborn and sklearn,  
 you need to install matplotlib.ticker, Image from IPython.display, missingno,  
 Translator from googletrans, Levenshtein, pyarrow, pyarrow.parquet, pickle and tqdm
 
