@@ -10,9 +10,7 @@ The project has two primary objectives:
 
 Through this project, our aim is to gain valuable insights into the customer base of the company and leverage those insights to create an effective marketing strategy.
 
-Please find the complete project report in [My Blog](https://medium.com/@jaeyoun.chang/customer-segmentation-report-for-arvato-financial-services-e3a34ec5293a)
-
-<!-- <a href=https://[medium.com/@jaeyoun.chang/customer-segmentation-report-for-arvato-financial-services-e3a34ec5293a]>this blogpost</a>. -->
+Please find the complete project report in [my blog](https://medium.com/@jaeyoun.chang/customer-segmentation-report-for-arvato-financial-services-e3a34ec5293a)
 
 ## Requirements
 The Jupyter Notebook is written in Python (3.x. version required).
