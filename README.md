@@ -10,6 +10,13 @@ The project has two primary objectives:
 
 Through this project, our aim is to gain valuable insights into the customer base of the company and leverage those insights to create an effective marketing strategy.
 
+There are five files associated with this project:
+* `Udacity_AZDIAS_052018.csv`: Demographics data for the general population of Germany; 891 211 persons (rows) x 366 features (columns).
+* `Udacity_CUSTOMERS_052018.csv`: Demographics data for customers of a mail-order company; 191 652 persons (rows) x 369 features (columns).
+* `Udacity_MAILOUT_052018_TRAIN.csv`: Demographics data for individuals who were targets of a marketing campaign; 42 982 persons (rows) x 367 (columns)
+* DIAS Information Levels - Attributes 2017.xlsx: a top-level list of attributes and descriptions, organized by informational category
+* DIAS Attributes - Values 2017.xlsx: a detailed mapping of data values for each feature in alphabetical order
+
 Please find the complete project report in [my blog](https://medium.com/@jaeyoun.chang/customer-segmentation-report-for-arvato-financial-services-e3a34ec5293a)
 
 ## Requirements
